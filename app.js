@@ -31,17 +31,17 @@ const deleteAddress = async (request) => {
 const addAddress = async (request) => {
   const formData = await request.formData();
 
-  const name = formData.get("name");
-  const address = formData.get("address");
+  const sender = formData.get("sender");
+  const message = formData.get("message");
 
-  await addressService.create(name, address);
+  await addressService.create(sender, message);
 
   return redirectTo("/");
 };
 
-const listAddresses = async (request) => {
+const listAddresses = async (_request) => {
   const data = {
-    addresses: await addressService.findAll(),
+    messages: await addressService.findAll(),
   };
 
   return new Response(await renderFile("index.eta", data), responseDetails);

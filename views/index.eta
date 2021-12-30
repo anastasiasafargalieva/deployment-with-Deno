@@ -3,20 +3,18 @@
 <h2>Add an address</h2>
 
 <form method="POST">
-  Name: <input type="text" name="name" /><br/>
-  Address: <input type="text" name="address" /><br/>
+  Name: <input type="text" name="sender" /><br/>
+  Address: <input type="text" name="message" /><br/>
   <input type="submit" value="Submit!" />
 </form>
 
 <h2>Current addresses</h2>
 
 <ul>
-<% it.addresses.forEach((address) => { %>
+<% it.messages.forEach((message) => { %>
   <li>
-    <%= address.name %>, <%= address.address %>
-    <form method="POST" action="/delete/<%= address.id %>">
-      <input type="submit" value="Delete" />
-    </form>
+    <%= message.sender %>: <%= message.message %>
+    
   </li>
 <% }); %>
 </ul>
